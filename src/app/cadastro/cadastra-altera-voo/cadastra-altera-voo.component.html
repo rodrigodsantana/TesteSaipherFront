@@ -1,0 +1,72 @@
+<!-- Page Content -->
+<div class="container main-container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <h1 class="display-3">{{tipo}} de Voo</h1>
+    </header>
+
+    <!-- <form class="mbr-form"> -->
+        <form [formGroup]="novoAlteraForm" (ngSubmit)="novoAltera(novoAlteraForm.value)" class="mbr-form"> 
+            <input type="hidden" formControlName="id"  >
+        <div class="row row-sm-offset">
+            <div class="col-md-4 multi-horizontal" data-for="name">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7"
+                        for="name-form1-2w">Aeronave/Matricula</label>
+                    <select formControlName="aeronaveForm" class="form-control">
+                        <option  [ngValue]="null" disabled>Selecione a Aeronave</option>
+                        <option *ngFor="let aeronave of aeronaves" [ngValue]="aeronave" >{{ aeronave.matricula }}</option>
+                    </select>
+                    <span class="error_form" *ngIf="(aeronaveForm.dirty || aeronaveForm.touched) &&  aeronaveForm.invalid && aeronaveForm.errors.required">
+                        Atenção é necessário informar a Aeronave.
+                      </span>
+                </div>
+            </div>
+            <div class="col-md-4 multi-horizontal" data-for="email">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="email-form1-2w">Aeroporto
+                        Origem</label>
+                        <!-- (change)="changeAeroporto($event)" --> 
+                    <select class="form-control" formControlName="aeroportoOrigem">
+                        <!-- [ngValue]="aeroporto.Id" -->
+                        <option [ngValue]="null" disabled>Selecione o Aeroporto Origem</option>
+                        <option *ngFor="let aeroporto of aeroportos" [ngValue]="aeroporto"  >{{ aeroporto.nome }}</option>
+                    </select>
+                    <span class="error_form" *ngIf="(aeroportoOrigem.dirty || aeroportoOrigem.touched) &&  aeroportoOrigem.invalid && aeroportoOrigem.errors.required">
+                        Atenção é necessário informar o Aeroporto Origem.
+                      </span>
+                </div>
+            </div>
+            <div class="col-md-4 multi-horizontal" data-for="phone">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-2w">Aeroporto
+                        Destino</label>
+                    <select class="form-control" formControlName="aeroportoDestino">
+                        <option [ngValue]="null" disabled>Selecione o Aeroporto Destino</option>
+                        <option *ngFor="let aeroporto of aeroportos" [ngValue]="aeroporto">{{ aeroporto.nome }}</option>
+                    </select>
+                    <span class="error_form" *ngIf="(aeroportoDestino.dirty || aeroportoDestino.touched) &&  aeroportoDestino.invalid && aeroportoDestino.errors.required">
+                        Atenção é necessário informar o Aeroporto Destino.
+                      </span>
+                </div>
+            </div>
+        </div>
+        <div class="row row-sm-offset">
+            <div class="col-md-4 multi-horizontal" data-for="name">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="name-form1-2w">Data e
+                        horário do Voo</label>
+                    <input type="datetime-local" formControlName="dataAgendamento" class="form-control"  data-form-field="Name" 
+                        >
+                </div>
+            </div>
+        </div>
+        <span class="input-group-btn">
+            <button href="#"  [disabled]="!novoAlteraForm.valid"  type="submit" class="btn btn-primary btn-form display-4">Confirmar</button>
+            &nbsp;
+            <button href="#" type="submit" class="btn btn-warning btn-form display-4" [routerLink]="['/home']">Cancelar</button>
+        </span>
+    </form>
+</div>
+<br>

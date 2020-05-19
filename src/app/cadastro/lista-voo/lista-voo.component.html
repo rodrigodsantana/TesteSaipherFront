@@ -1,0 +1,92 @@
+<div class="container main-container">
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="btn btn-success" [routerLink]="['/novoAltera']">
+                <span class="fa fa-plus"></span> Inserir
+            </a>
+        </li>
+    </ul>
+<br>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Aeronave</th>
+        <th scope="col">Data Voo</th>
+        <th scope="col">Origem</th>
+        <th scope="col">Destino</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let voo of voos" >
+        
+        <td>{{voo.aeronave}}</td>
+        <td>{{voo.dataVoo}}</td>
+        <td>{{voo.aeroportoOrigem}}</td>
+        <td>{{voo.aeroportoDestino}}</td>
+        <td>
+            <a class="btn btn-primary" [routerLink]="['/voo-altera/',voo.vooId]">
+                <span class="fa fa-edit"></span> Editar
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-danger" (click)="deletarVoo(voo)">
+                <span class="fa fa-trash" ></span>Excluir
+            </a>
+        </td>
+       
+      </tr>
+     
+    </tbody>
+  </table>
+   <!--  <div class="row text-center">
+        <div class="col-md-4" style="padding-bottom: 30px;">
+
+
+            <div *ngFor="let voo of voos" class="card h-100">
+                <a class="text-decoration-none">
+                    <div style="align-content:center;">
+                        <img src="/assets/imagem" height="164px" width="253px" alt="">
+                    </div>
+                </a>
+                <h4 class="card-title">{{voo.aeronave}}</h4>
+
+                <div>
+                    <p>Data Voo</p>
+                    <p>Origem</p>
+                    <p>Destino</p>
+                    
+                </div>
+
+                <div class="card-body">
+                    <div>
+                        <h4 class="card-text">
+                            {{voo.dataVoo}}
+                        </h4>
+                        <h4 class="card-text">
+                            {{voo.aeroportoOrigem}}
+                        </h4>
+                        <h4 class="card-text">
+                            {{voo.aeroportoDestino}}
+                        </h4>
+                    </div>
+                </div>
+
+
+                <div class="card-footer">
+                    <a class="btn btn-primary" [routerLink]="['/novoAltera']">
+                        <span class="fa fa-edit"></span> Editar
+                    </a>
+                    <br>
+                    <br>
+                    <a class="btn btn-danger">
+                        <span class="fa fa-trash"></span> Apagar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
